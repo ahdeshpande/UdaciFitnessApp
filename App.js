@@ -4,14 +4,19 @@ import {
     StyleSheet,
 } from 'react-native';
 import AddEntry from "./components/AddEntry";
+import {Provider} from "react-redux";
+import {createStore} from "redux/es/redux";
+import reducer from './reducers';
 
 export default class App extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <AddEntry/>
-            </View>
+            <Provider store={createStore(reducer)}>
+                <View style={styles.container}>
+                    <AddEntry/>
+                </View>
+            </Provider>
         );
     }
 }
