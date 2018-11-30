@@ -30,7 +30,7 @@ class History extends Component {
                 ?
                 <View>
                     <DateHeader date={formattedDate}/>
-                    <Text style={styles.noDataText}>
+                    <Text style={styles.noDateText}>
                         {today}
                     </Text>
                 </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
             height: 3,
         },
     },
-    noDataText: {
+    noDateText: {
         fontSize: 20,
         paddingTop: 20,
         paddingBottom: 20,
