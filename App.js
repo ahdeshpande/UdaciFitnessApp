@@ -9,11 +9,16 @@ import {Provider} from "react-redux";
 import {createStore} from "redux/es/redux";
 import reducer from './reducers';
 import History from "./components/History";
-import {createAppContainer, createBottomTabNavigator} from 'react-navigation';
+import {
+    createAppContainer,
+    createBottomTabNavigator,
+    createStackNavigator
+} from 'react-navigation';
 import {FontAwesome, Ionicons} from '@expo/vector-icons';
 import AddEntry from "./components/AddEntry";
 import {purple, white} from "./utils/colors";
 import {Constants} from 'expo';
+import EntryDetail from "./components/EntryDetail";
 
 const Tabs = createBottomTabNavigator({
     History: {
@@ -54,7 +59,22 @@ const Tabs = createBottomTabNavigator({
     }
 });
 
-const AppContainer = createAppContainer(Tabs);
+const MainNavigator = createStackNavigator({
+    Home: {
+        screen: Tabs,
+    },
+    EntryDetail: {
+        screen: EntryDetail,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    }
+});
+
+const AppContainer = createAppContainer(MainNavigator);
 
 
 function UdaciStatusBar({backgroundColor, ...props}) {
