@@ -20,6 +20,7 @@ import {purple, white} from "./utils/colors";
 import {Constants} from 'expo';
 import EntryDetail from "./components/EntryDetail";
 import Live from "./components/Live";
+import {setLocalNotification} from "./utils/helpers";
 
 const Tabs = createBottomTabNavigator({
     History: {
@@ -97,6 +98,10 @@ function UdaciStatusBar({backgroundColor, ...props}) {
 }
 
 class App extends React.Component {
+
+    componentDidMount() {
+        setLocalNotification();
+    }
 
     render() {
         return (

@@ -3,8 +3,9 @@ import {View, Text, TouchableOpacity, Platform, StyleSheet} from 'react-native';
 import {Ionicons} from '@expo/vector-icons'
 import {NavigationActions} from 'react-navigation';
 import {
+    clearLocalNotification,
     getDailyReminderValue,
-    getMetricMetaInfo,
+    getMetricMetaInfo, setLocalNotification,
     timeToString
 } from "../utils/helpers";
 import UdaciSlider from "./UdaciSlider";
@@ -89,7 +90,8 @@ class AddEntry extends Component {
 
         submitEntry({key, entry});
 
-        // Clear local notification
+        clearLocalNotification()
+            .then(setLocalNotification);
     };
 
     reset = () => {
