@@ -52,7 +52,7 @@ class Live extends Component {
             timeInterval: 1,
             distanceInterval: 1,
         }, ({coords}) => {
-            const newDirection = calculateDirection(coords);
+            const newDirection = calculateDirection(coords.heading);
             const {direction} = this.state;
 
             this.setState(() => ({
